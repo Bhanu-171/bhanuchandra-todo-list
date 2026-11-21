@@ -1,0 +1,86 @@
+* { box-sizing: border-box; }
+:root {
+  --ink: #18233d;
+  --muted: #7b849a;
+  --purple: #6658d3;
+  --purple-dark: #5144bb;
+  --line: #edf0f7;
+}
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  font-family: "DM Sans", sans-serif;
+  background:
+    radial-gradient(circle at 12% 12%, rgba(157, 146, 255, .34), transparent 28rem),
+    radial-gradient(circle at 90% 80%, rgba(112, 201, 224, .25), transparent 26rem),
+    linear-gradient(135deg, #f4f3ff 0%, #f7f9ff 48%, #eef8fb 100%);
+}
+button, input { font: inherit; }
+button { cursor: pointer; }
+.page-shell { width: min(900px, calc(100% - 40px)); margin: 0 auto; padding: 30px 0 44px; }
+.topbar { display: flex; justify-content: space-between; align-items: center; }
+.brand { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; font: 700 21px "Outfit", sans-serif; letter-spacing: -.6px; }
+.brand-mark { display: grid; place-items: center; width: 32px; height: 32px; color: white; border-radius: 11px; background: linear-gradient(135deg, #887cf0, #5c50c8); box-shadow: 0 6px 14px #6658d344; }
+.saved-status { display: flex; align-items: center; gap: 8px; color: #737d91; font-size: 12px; font-weight: 600; }
+.status-dot { width: 7px; height: 7px; border-radius: 50%; background: #43bd91; box-shadow: 0 0 0 4px #43bd9120; }
+.intro { text-align: center; padding: 62px 0 34px; }
+.eyebrow, .section-kicker { color: var(--purple); font-size: 10px; letter-spacing: 2.2px; font-weight: 700; }
+.intro h1 { margin: 12px 0 12px; font: 600 clamp(42px, 7vw, 62px)/1.04 "Outfit", sans-serif; letter-spacing: -2.4px; }
+.intro h1 span { color: var(--purple); }
+.intro-copy { color: var(--muted); font-size: 14px; line-height: 1.8; }
+.todo-card { max-width: 720px; margin: 0 auto; padding: 30px; border: 1px solid #ffffff; border-radius: 24px; background: rgba(255,255,255,.82); box-shadow: 0 22px 65px rgba(48, 54, 105, .11), inset 0 1px 0 #fff; backdrop-filter: blur(18px); }
+.card-heading { display: flex; align-items: center; justify-content: space-between; margin-bottom: 23px; }
+.section-kicker { margin: 0 0 6px; font-size: 9px; }
+.card-heading h2 { margin: 0; font: 600 25px "Outfit", sans-serif; letter-spacing: -.5px; }
+.date-chip { padding: 8px 12px; border-radius: 10px; color: #747d95; background: #f5f5fc; font-size: 11px; font-weight: 600; }
+.task-form { display: flex; align-items: center; gap: 10px; padding: 7px; border: 1px solid #e8eaf4; border-radius: 14px; background: #fafaff; transition: border .2s, box-shadow .2s; }
+.task-form:focus-within { border-color: #a59cf0; box-shadow: 0 0 0 4px #8175e51a; }
+.input-plus { padding-left: 8px; color: #8c83e5; font-size: 22px; }
+.task-form input { min-width: 0; flex: 1; padding: 10px 2px; border: 0; outline: 0; color: var(--ink); background: transparent; font-size: 13px; }
+.task-form input::placeholder { color: #a5aabd; }
+.add-button { border: 0; border-radius: 10px; padding: 12px 16px; color: white; background: linear-gradient(135deg, #8175e5, #5d51c8); box-shadow: 0 5px 12px #6658d333; font-size: 12px; font-weight: 700; transition: transform .2s, box-shadow .2s; }
+.add-button:hover { transform: translateY(-2px); box-shadow: 0 8px 16px #6658d344; }
+.add-button span { margin-left: 5px; }
+.list-toolbar { display: flex; justify-content: space-between; align-items: center; margin: 25px 0 12px; }
+.filters { display: flex; gap: 5px; padding: 4px; border-radius: 10px; background: #f4f4fb; }
+.filter { padding: 7px 12px; border: 0; border-radius: 7px; color: #8990a4; background: transparent; font-size: 11px; font-weight: 700; }
+.filter.active { color: var(--purple); background: white; box-shadow: 0 2px 7px #252b5010; }
+.clear-button { border: 0; color: #9298a9; background: transparent; font-size: 11px; }
+.clear-button:hover { color: #d45e73; }
+.task-list { display: grid; gap: 9px; margin: 0; padding: 0; list-style: none; }
+.task-item { display: flex; align-items: center; gap: 12px; padding: 14px 13px; border: 1px solid #eff0f7; border-radius: 12px; background: white; animation: appear .22s ease-out; }
+@keyframes appear { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+.task-check { display: grid; place-items: center; flex: 0 0 20px; width: 20px; height: 20px; border: 1.5px solid #d6d8e8; border-radius: 7px; color: white; background: white; font-size: 12px; }
+.task-item.done .task-check { border-color: #6c60d6; background: #6c60d6; }
+.task-text { flex: 1; min-width: 0; overflow-wrap: anywhere; color: #3e4962; font-size: 13px; }
+.task-item.done .task-text { color: #a4a9b7; text-decoration: line-through; }
+.delete-button { padding: 6px 8px; border: 0; border-radius: 7px; color: #a4a9b7; background: transparent; font-size: 11px; }
+.delete-button:hover { color: #d45e73; background: #fff2f4; }
+.empty-state { padding: 34px 12px 27px; text-align: center; }
+.empty-icon { display: grid; place-items: center; width: 42px; height: 42px; margin: 0 auto 10px; border-radius: 14px; color: #776bdd; background: #f0efff; font-size: 20px; }
+.empty-state h3 { margin: 0 0 5px; font: 600 15px "Outfit", sans-serif; }
+.empty-state p { margin: 0; color: #969daf; font-size: 11px; }
+.empty-state.hidden { display: none; }
+.card-footer { display: flex; justify-content: space-between; gap: 12px; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--line); color: #969daf; font-size: 10px; }
+.card-footer p { margin: 0; }
+.footer-sparkle { color: #8b7fe9; }
+.page-note { margin: 18px 0 0; color: #9aa1b3; text-align: center; font-size: 10px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+@media (max-width: 600px) {
+  .page-shell { width: min(100% - 24px, 520px); padding-top: 20px; }
+  .saved-status { font-size: 10px; }
+  .intro { padding: 48px 0 26px; }
+  .intro h1 { letter-spacing: -1.5px; }
+  .intro-copy { font-size: 12px; }
+  .desktop-break { display: none; }
+  .todo-card { padding: 20px 16px; border-radius: 19px; }
+  .card-heading h2 { font-size: 22px; }
+  .task-form { gap: 6px; }
+  .task-form input { font-size: 12px; }
+  .add-button { padding: 11px 12px; font-size: 11px; }
+  .list-toolbar { margin-top: 20px; }
+  .filter { padding: 7px 10px; }
+  .clear-button { font-size: 10px; }
+  .card-footer { font-size: 9px; }
+}
